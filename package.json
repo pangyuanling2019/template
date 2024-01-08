@@ -9,7 +9,6 @@
   "ty_config": {
     "apiRoot": "/o11y-api"
   },
-  "homepage": "/template",
   "description": "this is template1",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

@@ -3,7 +3,6 @@ import { TyStateClient, TyHttpClient } from '@ty-sdk/core';
 import { getTokenInfo, isDev, setTokenInfo } from '@/utils/constants';
 
 const cfg = process.env.CONFIG as any;
-
 //获取配置信息 应用名称（必须）
 const tyStateClient = new TyStateClient(cfg);
 
@@ -15,8 +14,7 @@ export const initAppInfo = async (isWujie: boolean) => {
     try {
         //本地调试并且不在主应用环境下调试，需要手动配置token
         if (isDev && !isWujie) {
-            //${token}
-            const tyToken = '';
+            const tyToken = ''; //${token};
             setTokenInfo({ token: tyToken });
             if (!tyToken) return true;
         }

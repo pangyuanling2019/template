@@ -5,6 +5,7 @@ const fs = require("fs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const archiver = require("archiver");
 
+const isProduction = process.env.NODE_ENV === "production";
 const packageJsonPath = "./package.json";
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 const packageName = packageJson.name;
@@ -15,8 +16,6 @@ const tyConfig = Object.assign(
   packageJson.ty_config
 );
 
-const isProduction = process.env.NODE_ENV === "production";
-console.log(isProduction);
 module.exports = {
   devServer: {
     // 配置webpack-dev-server， 在本地启动一个服务器运行
@@ -43,9 +42,6 @@ module.exports = {
       styles: path.resolve("src/styles"),
     },
     configure: (webpackConfig, { env, paths }) => {
-      //配置静态资源base
-      webpackConfig.output.publicPath = "/" + packageName + "/";
-
       // 将配置信息注入到webpackConfig中
       webpackConfig.plugins.push(
         new webpack.DefinePlugin({
@@ -55,6 +51,8 @@ module.exports = {
 
       // 在生产环境下的配置
       if (isProduction) {
+        //配置静态资源base
+        webpackConfig.output.publicPath = "/" + packageName + "/";
         // 禁用 sourcemap
         webpackConfig.devtool = false;
         // 添加 CopyWebpackPlugin 配置, 把package文件输出到build目录下

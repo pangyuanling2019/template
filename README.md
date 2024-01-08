@@ -78,7 +78,6 @@ npm run build
 | version     | 上传应用后的指定版本                                            | string | true     | -      |
 | tingyun     | 上传后生成的中英文名称                                          | string | true     | -      |
 | ty_config   | 用于听云函数的 配置信息                                         | string | true     | -      |
-| homepage    | 指定首次打开页面定位的路由                                      | string | true     | -      |
 | description | 上传后应用的秒数                                                | string | true     | -      |
 
 ---

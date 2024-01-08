@@ -6,16 +6,13 @@ import './index.less';
 import { initAppInfo } from './tyContext';
 
 const config = process.env.CONFIG as any;
-// const basename = process.env.NODE_ENV === 'production' ? `/${config.appName}` : '';
-const basename = `/${config.appName}`;
+const basename = process.env.NODE_ENV === 'production' ? `/${config.appName}` : '';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 if (window.__POWERED_BY_WUJIE__) {
-    // eslint-disable-next-line no-undef
     window.__WUJIE_MOUNT = () => {
         initAppInfo(!!window.__POWERED_BY_WUJIE__).then((res) => {
             if (res) {
-                // console.log(res)
                 root.render(
                     <BrowserRouter basename={basename}>
                         <App />
