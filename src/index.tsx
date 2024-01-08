@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './index.less';
-import { initAppInfo } from './tyContentx';
+import { initAppInfo } from './tyContext';
 
 const config = process.env.CONFIG as any;
 const basename = process.env.NODE_ENV === 'production' ? `/${config.appName}` : '';
